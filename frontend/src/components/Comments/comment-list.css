@@ -1,0 +1,46 @@
+.comment-list{
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 5px;
+}
+.comment-list-count{
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--dark-color);
+    color: var(--dark-color);
+    font-size: 30px;
+}
+.comment-item{
+    margin-top: 15px;
+    padding: 7px;
+    border: 1px solid var(--gray-color);
+    border-radius: 5px;
+}
+.comment-item-info{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.comment-item-username{
+    font-size: 21px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: var(--primary-color);
+}
+.comment-item-time{
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--pumpkin-color);
+}
+.comment-item-text{
+    font-size: 17px;
+    padding: 10px;
+    color: var(--dark-color);
+}
+.comment-item-icon-wrapper{
+    padding: 10px;
+    font-size: 18px;
+}
+.comment-item-icon-wrapper i{
+    cursor: pointer;
+}
