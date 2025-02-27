@@ -1,6 +1,5 @@
 const express=require('express')
 require('dotenv').config()
-const mongoose=require('mongoose')
 const connectToDB=require('./config/connectToDB')
 const cors=require('cors')
 const xss=require('xss-clean')
@@ -14,16 +13,6 @@ const app=express()
 
 // Connect to DB
 connectToDB()
-
-// ading test code
-app.get('/test-db', async (req, res) => {
-    try {
-        await mongoose.connection.db.admin().ping();
-        res.send('Connected to MongoDB Atlas successfully!');
-    } catch (err) {
-        res.status(500).send('Failed to connect to MongoDB Atlas: ' + err.message);
-    }
-    });
 
 // Middlewares
 app.use(express.json())
