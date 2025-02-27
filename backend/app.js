@@ -1,5 +1,6 @@
 const express=require('express')
 require('dotenv').config()
+const mongoose=require('mongoose')
 const connectToDB=require('./config/connectToDB')
 const cors=require('cors')
 const xss=require('xss-clean')
@@ -23,7 +24,7 @@ app.get('/test-db', async (req, res) => {
         res.status(500).send('Failed to connect to MongoDB Atlas: ' + err.message);
     }
     });
-    
+
 // Middlewares
 app.use(express.json())
 
