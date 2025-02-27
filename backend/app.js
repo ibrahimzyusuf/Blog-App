@@ -45,7 +45,7 @@ app.use(rateLimiting({
 
 // Cors policy
 app.use(cors({
-    origin:'http://localhost:3000'
+    origin:process.env.CLIENT_DOMAIN
 }))
 
 // Routes
