@@ -45,7 +45,7 @@ const registerUserCtrl=asyncHandler(async(req,res)=>{
     await verificationToken.save()
 
     // Making the link
-    const link=`${process.env.FRONTEND_URL}/users/${user._id}/verify/${verificationToken.token}`
+    const link=`${process.env.CLIENT_DOMAIN}/users/${user._id}/verify/${verificationToken.token}`
 
     // Putting the link in html template
     const htmlTemplate=`
@@ -102,7 +102,7 @@ const loginUserCtrl=asyncHandler(async(req,res)=>{
         }
 
         // Making the link
-        const link=`${process.env.FRONTEND_URL}/users/${user._id}/verify/${verificationToken.token}`
+        const link=`${process.env.CLIENT_DOMAIN}/users/${user._id}/verify/${verificationToken.token}`
 
         // Putting the link in html template
         const htmlTemplate=`

@@ -34,7 +34,7 @@ app.use(rateLimiting({
 
 // Cors policy
 app.use(cors({
-    origin:process.env.FRONTEND_URL
+    origin:process.env.CLIENT_DOMAIN
 }))
 
 // Routes

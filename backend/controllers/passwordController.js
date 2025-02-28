@@ -36,7 +36,7 @@ const sendResetPasswordLinkCtrl=asyncHandler(async(req,res)=>{
     }
 
     // Creating link
-    const link=`${process.env.FRONTEND_URL}/reset-password/${user._id}/${verificationToken.token}`
+    const link=`${process.env.CLIENT_DOMAIN}/reset-password/${user._id}/${verificationToken.token}`
 
     // Creating html template
     const htmlTemplate=`<a href='${link}'>Click here to reset your password</a>`
