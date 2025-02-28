@@ -14,7 +14,7 @@ const loginUser=(user)=> {
             })
             const data=await response.json() */
             // <=>
-            const {data}=await axios.post('http://localhost:8000/api/auth/login',user)
+            const {data}=await axios.post(`${Process.env.REACT_APP_API_BASE_URL}/api/auth/login`,user)
 
             dispatch(authActions.login(data))
             localStorage.setItem('userInfo',JSON.stringify(data))
@@ -36,7 +36,7 @@ const logoutUser=()=>{
 const registerUser=(user)=>{
     return async (dispatch) => {
         try {
-            const {data}=await axios.post('http://localhost:8000/api/auth/register',user)
+            const {data}=await axios.post(`${Process.env.REACT_APP_API_BASE_URL}/api/auth/register`,user)
             dispatch(authActions.register(data.message))
         } catch (error) {
             toast.error(error.response.data.message)
@@ -49,7 +49,7 @@ const registerUser=(user)=>{
 const verifyEmail=(userId,token)=>{
     return async (dispatch) => {
         try {
-            await axios.get(`http://localhost:8000/api/auth/${userId}/verify/${token}`)
+            await axios.get(`${Process.env.REACT_APP_API_BASE_URL}/api/auth/${userId}/verify/${token}`)
             dispatch(authActions.setIsEmailVerified())
         } catch (error) {
             console.log(error)
