@@ -6,7 +6,7 @@ import axios from "axios";
 const fetchPosts=(pageNumber)=>{
     return async (dispatch) => {
         try {
-            const {data}=await axios.get(`${Process.env.REACT_APP_API_BASE_URL}/api/posts?pageNumber=${pageNumber}`)
+            const {data}=await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/posts?pageNumber=${pageNumber}`)
             dispatch(postActions.setPosts(data))
         } catch (error) {
             toast.error(error.response.data.message)
@@ -18,7 +18,7 @@ const fetchPosts=(pageNumber)=>{
 const getPostsCount=()=>{
     return async (dispatch) => {
         try {
-            const {data}=await axios.get(`${Process.env.REACT_APP_API_BASE_URL}/api/posts/count`)
+            const {data}=await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/posts/count`)
             dispatch(postActions.setPostsCount(data))
         } catch (error) {
             toast.error(error.response.data.message)
@@ -30,7 +30,7 @@ const getPostsCount=()=>{
 const fetchPostsByCategory=(category)=>{
     return async (dispatch) => {
         try {
-            const {data}=await axios.get(`${Process.env.REACT_APP_API_BASE_URL}/api/posts?category=${category}`)
+            const {data}=await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/posts?category=${category}`)
             dispatch(postActions.setPostsCategory(data))
         } catch (error) {
             toast.error(error.response.data.message)
@@ -43,7 +43,7 @@ const createPost=(newPost)=>{
     return async (dispatch,getState) => {
         try {
             dispatch(postActions.setLoading())
-            await axios.post(`${Process.env.REACT_APP_API_BASE_URL}/api/posts`,newPost,{
+            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/posts`,newPost,{
                 headers:{
                     'Authorization':'Bearer '+getState().auth.user.token,
                     'Content-Type':'multipart/form-data'
@@ -62,7 +62,7 @@ const createPost=(newPost)=>{
 const fetchSinglePost=(postId)=>{
     return async (dispatch) => {
         try {
-            const {data}=await axios.get(`${Process.env.REACT_APP_API_BASE_URL}/api/posts/${postId}`)
+            const {data}=await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/posts/${postId}`)
             dispatch(postActions.setPost(data))
         } catch (error) {
             toast.error(error.response.data.message)
@@ -74,7 +74,7 @@ const fetchSinglePost=(postId)=>{
 const toggleLike=(postId)=>{
     return async (dispatch,getState) => {
         try {
-            const {data}=await axios.put(`${Process.env.REACT_APP_API_BASE_URL}/api/posts//like/${postId}`,{},{
+            const {data}=await axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/posts//like/${postId}`,{},{
                 headers:{
                     'Authorization':'Bearer '+getState().auth.user.token
                 }
@@ -90,7 +90,7 @@ const toggleLike=(postId)=>{
 const updatePostImage=(newImage,postId)=>{
     return async (dispatch,getState) => {
         try {
-            await axios.put(`${Process.env.REACT_APP_API_BASE_URL}/api/posts/update-image/${postId}`,newImage,{
+            await axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/posts/update-image/${postId}`,newImage,{
                 headers:{
                     'Authorization':'Bearer '+getState().auth.user.token,
                     'Content-Type':'multipart/form-data'
@@ -107,7 +107,7 @@ const updatePostImage=(newImage,postId)=>{
 const updatePost=(newPost,postId)=>{
     return async (dispatch,getState) => {
         try {
-            const { data }=await axios.put(`${Process.env.REACT_APP_API_BASE_URL}/api/posts/${postId}`,newPost,{
+            const { data }=await axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/posts/${postId}`,newPost,{
                 headers:{
                     'Authorization':'Bearer '+getState().auth.user.token
                 }
@@ -123,7 +123,7 @@ const updatePost=(newPost,postId)=>{
 const deletePost=(postId)=>{
     return async (dispatch,getState) => {
         try {
-            const { data }=await axios.delete(`${Process.env.REACT_APP_API_BASE_URL}/api/posts/${postId}`,{
+            const { data }=await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/posts/${postId}`,{
                 headers:{
                     'Authorization':'Bearer '+getState().auth.user.token
                 }
@@ -140,7 +140,7 @@ const deletePost=(postId)=>{
 const getAllPosts=()=>{
     return async (dispatch) => {
         try {
-            const {data}=await axios.get(`${Process.env.REACT_APP_API_BASE_URL}/api/posts`)
+            const {data}=await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/posts`)
             dispatch(postActions.setPosts(data))
         } catch (error) {
             toast.error(error.response.data.message)

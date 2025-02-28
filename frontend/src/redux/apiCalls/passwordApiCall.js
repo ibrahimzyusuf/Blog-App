@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 const forgotPassword=(email)=>{
     return async () => {
         try {
-            const {data}=await axios.post(`${Process.env.REACT_APP_API_BASE_URL}/api/password/reset-password-link`,{email})
+            const {data}=await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/password/reset-password-link`,{email})
             toast.success(data.message)
         } catch (error) {
             toast.error(error.response.data.message)
@@ -19,7 +19,7 @@ const forgotPassword=(email)=>{
 const getResetPassword=(userId,token)=>{
     return async (dispatch) => {
         try {
-            await axios.get(`${Process.env.REACT_APP_API_BASE_URL}/api/password/reset-password/${userId}/${token}`)
+            await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/password/reset-password/${userId}/${token}`)
         } catch (error) {
             console.log(error)
             dispatch(passwordActions.setError())
@@ -32,7 +32,7 @@ const getResetPassword=(userId,token)=>{
 const resetPassword=(newPassword,user)=>{
     return async () => {
         try {
-            const {data}=await axios.post(`${Process.env.REACT_APP_API_BASE_URL}/api/password/reset-password/${user.userId}/${user.token}`,
+            const {data}=await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/password/reset-password/${user.userId}/${user.token}`,
             {password:newPassword})
             toast.success(data.message)
         } catch (error) {

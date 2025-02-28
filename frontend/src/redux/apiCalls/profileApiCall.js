@@ -7,7 +7,7 @@ import axios from "axios";
 const getUserProfile=(userId)=>{
     return async (dispatch) => {
         try {
-            const {data}=await axios.get(`${Process.env.REACT_APP_API_BASE_URL}/api/users/profile/${userId}`)
+            const {data}=await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/users/profile/${userId}`)
             dispatch(profileActions.setProfile(data))
         } catch (error) {
             toast.error(error.response.data.message)
@@ -19,7 +19,7 @@ const getUserProfile=(userId)=>{
 const uploadProfilePhoto=(newPhoto)=>{
     return async (dispatch,getState) => {
         try {
-            const {data}=await axios.post(`${Process.env.REACT_APP_API_BASE_URL}/api/users/profile/profile-photo-upload`,
+            const {data}=await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/users/profile/profile-photo-upload`,
                 newPhoto,{
                     headers:{
                         'Authorization':'Bearer '+ getState().auth.user.token,
@@ -45,7 +45,7 @@ const uploadProfilePhoto=(newPhoto)=>{
 const updateProfile=(userId,profile)=>{
     return async (dispatch,getState) => {
         try {
-            const {data}=await axios.put(`${Process.env.REACT_APP_API_BASE_URL}/api/users/profile/${userId}`,
+            const {data}=await axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/users/profile/${userId}`,
                 profile,{
                     headers:{
                         'Authorization':'Bearer '+ getState().auth.user.token,
@@ -70,7 +70,7 @@ const deleteProfile=(userId)=>{
     return async (dispatch,getState) => {
         try {
             dispatch(profileActions.setLoading())
-            const {data}=await axios.delete(`${Process.env.REACT_APP_API_BASE_URL}/api/users/profile/${userId}`,
+            const {data}=await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/users/profile/${userId}`,
                 {
                     headers:{
                         'Authorization':'Bearer '+ getState().auth.user.token,
@@ -92,7 +92,7 @@ const deleteProfile=(userId)=>{
 const getUsersCount=()=>{
     return async (dispatch,getState) => {
         try {
-            const {data}=await axios.get(`${Process.env.REACT_APP_API_BASE_URL}/api/users/count`,
+            const {data}=await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/users/count`,
                 {
                     headers:{
                         'Authorization':'Bearer '+ getState().auth.user.token,
@@ -110,7 +110,7 @@ const getUsersCount=()=>{
 const getAllUsersProfiles=()=>{
     return async (dispatch,getState) => {
         try {
-            const {data}=await axios.get(`${Process.env.REACT_APP_API_BASE_URL}/api/users/profiles`,
+            const {data}=await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/users/profiles`,
                 {
                     headers:{
                         'Authorization':'Bearer '+ getState().auth.user.token,
