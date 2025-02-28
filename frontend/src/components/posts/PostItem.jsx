@@ -9,14 +9,14 @@ const PostItem = ({post,userName,userId}) => {
   return (
     <div className='post-item'>
       <div className="post-item-image-wrapper">
-        <img src={post?.image.url} alt="" className='post-item-image'/>
+        <img src={post?.image?.url} alt="" className='post-item-image'/>
       </div>
       <div className="post-item-info-wrapper">
         <div className="post-item-info">
           <div className="post-item-author">
             <strong>Author: </strong>
             <Link className='post-item-username' to={profileLink}>
-            {userName ? userName : post?.user.userName}
+            {userName ? userName : post?.user?.userName}
             </Link>
           </div>
           <div className="post-item-date">
