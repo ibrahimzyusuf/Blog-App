@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const createComment=(newComment)=>{
     return async (dispatch,getState) => {
         try {
-            const {data}=await axios.post('http://localhost:8000/api/comments',newComment,{
+            const {data}=await axios.post(`${Process.env.REACT_APP_API_BASE_URL}/api/comments`,newComment,{
                 headers:{
                     Authorization:'Bearer '+getState().auth.user.token
                 }
@@ -23,7 +23,7 @@ const createComment=(newComment)=>{
 const updateComment=(commentId,comment)=>{
     return async (dispatch,getState) => {
         try {
-            const {data}=await axios.put(`http://localhost:8000/api/comments/${commentId}`,comment,{
+            const {data}=await axios.put(`${Process.env.REACT_APP_API_BASE_URL}/api/comments/${commentId}`,comment,{
                 headers:{
                     Authorization:'Bearer '+getState().auth.user.token
                 }
@@ -39,7 +39,7 @@ const updateComment=(commentId,comment)=>{
 const deleteComment=(commentId)=>{
     return async (dispatch,getState) => {
         try {
-            await axios.delete(`http://localhost:8000/api/comments/${commentId}`,{
+            await axios.delete(`${Process.env.REACT_APP_API_BASE_URL}/api/comments/${commentId}`,{
                 headers:{
                     Authorization:'Bearer '+getState().auth.user.token
                 }
@@ -56,7 +56,7 @@ const deleteComment=(commentId)=>{
 const fetchAllComments=()=>{
     return async (dispatch,getState) => {
         try {
-            const {data}=await axios.get(`http://localhost:8000/api/comments`,{
+            const {data}=await axios.get(`${Process.env.REACT_APP_API_BASE_URL}/api/comments`,{
                 headers:{
                     Authorization:'Bearer '+getState().auth.user.token
                 }
