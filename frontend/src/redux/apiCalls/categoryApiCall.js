@@ -18,7 +18,7 @@ const fetchCategories=()=>{
 const createCategory=(newCategory)=>{
     return async (dispatch,getState) => {
         try {
-            const {data}=await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/categories,newCategory`,{
+            const {data}=await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/categories`,newCategory,{
                 headers:{
                     Authorization:'Bearer '+getState().auth.user.token
                 }
