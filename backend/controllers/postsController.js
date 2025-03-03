@@ -4,6 +4,7 @@ const asyncHandler=require('express-async-handler')
 const {Post,validateCreatePost, validateUpdatePost}=require('../models/Post')
 const {cloudinaryUploadPhoto, cloudinaryRemovePhoto}=require('../utils/cloudinary')
 const {Comment}=require('../models/Comment')
+const cloudinary=require('cloudinary')
 
 /**
  * @desc Create new post
