@@ -29,6 +29,7 @@
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^13.0.0",
     "nodemon": "^3.1.7"
   }
 }
