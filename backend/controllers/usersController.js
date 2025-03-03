@@ -6,6 +6,7 @@ const {Comment}=require('../models/Comment')
 const path=require('path')
 const { cloudinaryUploadPhoto, cloudinaryRemovePhoto, cloudinaryRemoveMultiblePhotos} = require('../utils/cloudinary')
 const fs=require('fs')
+const cloudinary=require('cloudinary')
 
 /**
  * @desc Get all users profiles
@@ -91,9 +92,18 @@ const profilePhotoUploadCtrl=asyncHandler(async(req,res)=>{
     }
 
     // Get the image from local and upload it to cloudinary
-    const imagePath=path.join(__dirname,`../images/${req.file.filename}`)
+    /* const imagePath=path.join(__dirname,`../images/${req.file.filename}`)
     const result=await cloudinaryUploadPhoto(imagePath)
-    console.log(result)
+    console.log(result) */
+
+    // Convert the file buffer to a base64 string
+    const fileBuffer = req.file.buffer.toString('base64');
+    const dataUri = `data:${req.file.mimetype};base64,${fileBuffer}`;
+
+    // Upload the file to Cloudinary
+    const result = await cloudinary.uploader.upload(dataUri, {
+        folder: 'profile-photos',
+    });
 
     // Get the user he want to upload his profile photo and check if he has an old profile photo to delete it
     const user=await User.findById(req.user.id)
@@ -113,7 +123,7 @@ const profilePhotoUploadCtrl=asyncHandler(async(req,res)=>{
     profilPhoto:{url:result.secure_url,publicId:result.public_id}})
 
     // Remove the image from local
-    fs.unlinkSync(imagePath)
+    // fs.unlinkSync(imagePath)
 })
 
 /**
