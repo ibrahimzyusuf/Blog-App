@@ -24,9 +24,18 @@ const createPostCtrl=asyncHandler(async(req,res)=>{
         return res.status(400).json({message:error.details[0].message})
     }
     
+    // Convert the file buffer to a base64 string
+    const fileBuffer = req.file.buffer.toString('base64');
+    const dataUri = `data:${req.file.mimetype};base64,${fileBuffer}`;
+
+    // Upload the file to Cloudinary
+    const result = await cloudinary.uploader.upload(dataUri, {
+        folder: 'profile-photos',
+    });
+
     // Upload the image of the post to cloudinary
-    const imagePath=path.join(__dirname,`../images/${req.file.filename}`)
-    const result=await cloudinaryUploadPhoto(imagePath)
+    /* const imagePath=path.join(__dirname,`../images/${req.file.filename}`)
+    const result=await cloudinaryUploadPhoto(imagePath) */
 
     // Create the post and save it to db
     const post=await Post.create({
@@ -44,7 +53,7 @@ const createPostCtrl=asyncHandler(async(req,res)=>{
     res.status(201).json(post)
 
     // Remove the image from local
-    fs.unlinkSync(imagePath)
+    // fs.unlinkSync(imagePath)
 })
 
 /**
@@ -191,9 +200,18 @@ const updatePostImageCtrl=asyncHandler(async(req,res)=>{
     // Delete the old image
     await cloudinaryRemovePhoto(post.image.publicId)
 
+    // Convert the file buffer to a base64 string
+    const fileBuffer = req.file.buffer.toString('base64');
+    const dataUri = `data:${req.file.mimetype};base64,${fileBuffer}`;
+
+    // Upload the file to Cloudinary
+    const result = await cloudinary.uploader.upload(dataUri, {
+        folder: 'profile-photos',
+    });
+
     // Upload the new one
-    const imagePath=path.join(__dirname,`../images/${req.file.filename}`)
-    const result=await cloudinaryUploadPhoto(imagePath)
+    /* const imagePath=path.join(__dirname,`../images/${req.file.filename}`)
+    const result=await cloudinaryUploadPhoto(imagePath) */
 
     // Update the imageon db
     const updatedPost=await Post.findByIdAndUpdate(req.params.id,{
@@ -209,7 +227,7 @@ const updatePostImageCtrl=asyncHandler(async(req,res)=>{
     res.status(200).json(updatedPost)
 
     // Remove the image from local
-    fs.unlinkSync(imagePath)
+    // fs.unlinkSync(imagePath)
 })
 
 /**
