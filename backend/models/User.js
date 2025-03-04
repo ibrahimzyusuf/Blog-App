@@ -29,7 +29,7 @@ const UserSchema=new mongoose.Schema(
         profilePhoto:{
             type:Object,
             default:{
-                url:'../../frontend/public/images/user-avatar.png',
+                url:'/images/user-avatar.png',
                 publicId:null,
             }
         },
