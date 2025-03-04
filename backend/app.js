@@ -7,12 +7,16 @@ const rateLimiting=require('express-rate-limit')
 const helmet=require('helmet')
 const hpp=require('hpp')
 const {errorHandler,notFound}=require('./middlewares/error')
+const compression=require('compression')
 
 // Init app
 const app=express()
 
 // Connect to DB
 connectToDB()
+
+// Use compression for reducing the siizes of the assets
+app.use(compression());
 
 // Middlewares
 app.use(express.json())
