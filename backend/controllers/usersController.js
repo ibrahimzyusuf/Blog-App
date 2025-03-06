@@ -91,11 +91,6 @@ const profilePhotoUploadCtrl=asyncHandler(async(req,res)=>{
         return res.status(400).json({message:'No file provided'})
     }
 
-    // Get the image from local and upload it to cloudinary
-    /* const imagePath=path.join(__dirname,`../images/${req.file.filename}`)
-    const result=await cloudinaryUploadPhoto(imagePath)
-    console.log(result) */
-
     // Convert the file buffer to a base64 string
     const fileBuffer = req.file.buffer.toString('base64');
     const dataUri = `data:${req.file.mimetype};base64,${fileBuffer}`;
@@ -121,9 +116,6 @@ const profilePhotoUploadCtrl=asyncHandler(async(req,res)=>{
     // Response
     res.status(200).json({message:'Your profile photo uploaded successfully',
     profilPhoto:{url:result.secure_url,publicId:result.public_id}})
-
-    // Remove the image from local
-    // fs.unlinkSync(imagePath)
 })
 
 /**

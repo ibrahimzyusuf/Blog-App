@@ -29,10 +29,6 @@ const PostItem = ({post,userName,userId}) => {
         </div>
         <p className="post-item-description">
           {post?.description}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, voluptatum quaerat dicta eius voluptas sit
-          eveniet eaque ad amet. Nulla ex delectus quo harum, maxime expedita repellat accusantium provident culpa!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, voluptatum quaerat dicta eius voluptas sit
-          eveniet eaque ad amet. Nulla ex delectus quo harum, maxime expedita repellat accusantium provident culpa!
           </p>
           <Link className='post-item-link' to={`/posts/details/${post._id}`}>
           Read more...

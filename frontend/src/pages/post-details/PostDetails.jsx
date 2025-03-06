@@ -82,14 +82,6 @@ return (
         </div>
         <p className="post-details-description">
             {post?.description}
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Est dolores veniam ullam consectetur voluptatem molestiae cumque
-            quis et deserunt itaque repellat aspernatur dolorum,
-            similique voluptatibus tempore temporibus quo repellendus corporis!
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Est dolores veniam ullam consectetur voluptatem molestiae cumque
-            quis et deserunt itaque repellat aspernatur dolorum,
-            similique voluptatibus tempore temporibus quo repellendus corporis!
         </p>
         <div className="post-details-icon-wrapper">
             <div>

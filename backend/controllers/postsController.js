@@ -34,10 +34,6 @@ const createPostCtrl=asyncHandler(async(req,res)=>{
         folder: 'profile-photos',
     });
 
-    // Upload the image of the post to cloudinary
-    /* const imagePath=path.join(__dirname,`../images/${req.file.filename}`)
-    const result=await cloudinaryUploadPhoto(imagePath) */
-
     // Create the post and save it to db
     const post=await Post.create({
         title:req.body.title,
@@ -52,9 +48,6 @@ const createPostCtrl=asyncHandler(async(req,res)=>{
 
     // Response
     res.status(201).json(post)
-
-    // Remove the image from local
-    // fs.unlinkSync(imagePath)
 })
 
 /**
@@ -210,10 +203,6 @@ const updatePostImageCtrl=asyncHandler(async(req,res)=>{
         folder: 'profile-photos',
     });
 
-    // Upload the new one
-    /* const imagePath=path.join(__dirname,`../images/${req.file.filename}`)
-    const result=await cloudinaryUploadPhoto(imagePath) */
-
     // Update the imageon db
     const updatedPost=await Post.findByIdAndUpdate(req.params.id,{
         $set:{
@@ -226,9 +215,6 @@ const updatePostImageCtrl=asyncHandler(async(req,res)=>{
 
     // response
     res.status(200).json(updatedPost)
-
-    // Remove the image from local
-    // fs.unlinkSync(imagePath)
 })
 
 /**
