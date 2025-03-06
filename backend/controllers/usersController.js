@@ -144,7 +144,7 @@ const deleteUserProfileCtrl=asyncHandler(async(req,res)=>{
     const posts=await Post.find({user:user._id})
 
     // Get the public ids from the posts
-    const publicIds=posts?.map((post)=>{post.image.publicId})
+    const publicIds=posts?.map((post)=> post.image.publicId)
 
     // Delete the photos of the posts from cloudinary
     if (publicIds?.length>0) {
