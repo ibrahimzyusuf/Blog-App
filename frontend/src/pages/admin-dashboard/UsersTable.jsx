@@ -52,7 +52,7 @@ return (
                             <td>{index +1}</td>
                             <td>
                                 <div className="table-image">
-                                    <img src={item.profilePhoto?.url} alt="profile image" className="table-user-image" loading='lazy' />
+                                    <img src={item.profilePhoto?.url} alt="profile photo" className="table-user-image" loading='lazy' />
                                     <span className='table-username'>{item.userName}</span>
                                 </div>
                             </td>

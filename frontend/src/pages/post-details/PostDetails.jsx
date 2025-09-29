@@ -57,7 +57,7 @@ const PostDetails = () => {
 return (
     <section className="post-details">
         <div className="post-details-image-wrapper">
-            <img src={file?URL.createObjectURL(file):post?.image.url} alt="post image" className="post-details-image" loading="lazy" />
+            <img src={file?URL.createObjectURL(file):post?.image.url} alt="post photo" className="post-details-image" loading="lazy" />
             {user?._id===post?.user?._id && (
                 <form onSubmit={updateImageSubmitHandler} className="update-post-image-form">
                 <label htmlFor="file" className="update-post-label">
@@ -72,7 +72,7 @@ return (
         </div>
         <h1 className="post-details-title">{post?.title}</h1>
         <div className="post-details-user-info">
-            <img src={post?.user?.profilePhoto?.url} alt="profile image" className="post-details-user-image" loading="lazy" />
+            <img src={post?.user?.profilePhoto?.url} alt="profile photo" className="post-details-user-image" loading="lazy" />
             <div className="post-details-user">
                 <strong>
                     <Link to={`/profile/${post?.user?._id}`}>{post?.user?.userName}</Link>

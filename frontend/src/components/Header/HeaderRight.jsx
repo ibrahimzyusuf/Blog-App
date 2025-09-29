@@ -21,7 +21,7 @@ return (
         {user?(<>
             <div className="header-right-user-info">
                 <span onClick={()=>setDropdown(prev=>!prev)} className="header-right-username">{user?.userName}</span>
-                <img src={user?.profilePhoto.url} alt="profile image" className="header-right-user-photo" loading='lazy' />
+                <img src={user?.profilePhoto.url} alt="profile photo" className="header-right-user-photo" loading='lazy' />
                 {dropdown && (
                     <div className="header-right-dropdown">
                     <Link to={`/profile/${user._id}`} className='header-dropdown-item' onClick={()=>setDropdown(false)} >
