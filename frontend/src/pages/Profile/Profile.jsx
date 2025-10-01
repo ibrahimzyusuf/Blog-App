@@ -85,7 +85,7 @@ return (
     <section className="profile">
         <div className="profile-header">
             <div className="profile-image-wrapper">
-                <img src={file? URL.createObjectURL(file):profile?.profilePhoto.url} alt="profile photo" className="profile-image" loading='lazy' />
+                <img src={file? URL.createObjectURL(file):profile?.profilePhoto.url} alt="profile" className="profile-image" loading='lazy' />
                 {user?._id===profile?._id && (
                     <form onSubmit={formSubmitHandler}>
                     <abbr title="choose profile photo">
