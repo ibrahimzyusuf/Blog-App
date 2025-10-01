@@ -42,6 +42,9 @@ app.use(cors({
 }))
 
 // Routes
+app.get('/', (req, res) => {
+    res.json({ message: 'Backend is running' });
+});
 app.use('/api/auth',require('./routes/authRoute'))
 app.use('/api/users',require('./routes/usersRoute'))
 app.use('/api/posts',require('./routes/postRoute'))
