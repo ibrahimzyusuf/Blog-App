@@ -39,6 +39,7 @@ const registerUser=(user)=>{
             const {data}=await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/auth/register`,user)
             dispatch(authActions.register(data.message))
         } catch (error) {
+            console.log(error)
             toast.error(error.response.data.message)
         }
         
