@@ -1,4 +1,4 @@
-const nodemailer=require('nodemailer')
+/* const nodemailer=require('nodemailer')
 
 module.exports=async (userEmail,subject,htmlTemplate) => { 
     try {
@@ -21,4 +21,29 @@ module.exports=async (userEmail,subject,htmlTemplate) => {
         console.log(error)
         throw new Error('Internal server error (nodemailer)')
     }
-}
+} */
+
+const axios = require('axios');
+
+module.exports = async (userEmail, subject, htmlTemplate) => {
+    try {
+        const payload = {
+        from: process.env.APP_EMAIL_ADDRESS, // must be verified sender
+        to: [userEmail],
+        subject,
+        html: htmlTemplate,
+        };
+
+        const res = await axios.post('https://api.resend.com/emails', payload, {
+        headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+        },});
+
+        console.log('Email sent:', res.data);
+        } 
+        catch (error) {
+        console.error('Resend error:', error.response?.data || error.message);
+        throw new Error('Internal server error (Resend)');
+        }
+};
