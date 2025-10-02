@@ -28,7 +28,7 @@ const axios = require('axios');
 module.exports = async (userEmail, subject, htmlTemplate) => {
     try {
         const payload = {
-        from: process.env.APP_EMAIL_ADDRESS, // must be verified sender
+        from: 'Blog App <onboarding@resend.dev>',
         to: [userEmail],
         subject,
         html: htmlTemplate,
